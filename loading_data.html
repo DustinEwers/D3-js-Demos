@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scales and Axes</title>
+    <title>Loading Data</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
     <style type="text/css">
@@ -34,8 +34,8 @@
       </ul>
       <section class="top-bar-section">
         <ul class="left">
-          <li><a href="./loading_data.html">Loading Data</a></li>
-          <li><a href="./svg.html">Just Enough SVG</a></li>
+    	    <li><a href="./loading_data.html">Loading Data</a></li>
+    	    <li><a href="./svg.html">Just Enough SVG</a></li>
           <li><a href="./updating_data.html">Updating Data</a></li>
           <li><a href="./axes_scales.html">Scales and Axes</a></li>
           <li><a href="./bar_chart.html">Bar Chart</a></li>
@@ -44,26 +44,37 @@
     </nav>        
     <div class="row">
       <div class="large-12 columns">
-        <h1>Scales and Axes</h1>
+        <h1>Loading Data</h1>
       </div>
     </div>
 
     <div class="row">
         <div class="large-8 columns">
-            <p>This demo shows a variety of scales and axes.</p>
+            <p>This example demonstrates how to load data in D3.js</p>
+            <p>This data is sourced from <a href="http://www.gapminder.org/GapminderMedia/wp-uploads/Results-from-the-Ignorance-Survey-in-the-US..pdf">Gapminder</a>.</p>
         </div>
     </div>
     <div class="row">
       <div class="large-12 columns">
-        <div id="chartContainer">
-        </div>
+        <p>1000 people were asked "What percentage of adults in the world today are literate?" and were given three options. This table shows the percentage of people who chose each option. </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Literacy Rate</th>
+                    <th>% Answered</th>
+                </tr>
+            </thead>
+            <tbody id="tagTableBody">
+
+            </tbody>
+        </table>
       </div>
     </div>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
     <script src="js/d3/d3.js"></script>
     <!-- Custom Example Code -->
-    <script src="js/d3/axes_scales.js"></script>
+    <script src="js/d3/loading_data.js"></script>
     <script>
       $(document).foundation();
     </script>
