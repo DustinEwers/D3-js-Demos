@@ -4,21 +4,21 @@ var colors = d3.scale.category10();
 
 d3.d3Demos.piechart = function(){
   // defaults
-  var size = "400",
-      outerRadius = "175",
+  var size = "600",
+      outerRadius = "290",
       innerRadius = 0; 
 
       function generator(selection){
         selection.each(function(dataSet) {
-
 			var pie = d3.layout.pie();
 			
-
 			//Create SVG element
+			var viewBox = "0 0 " + size + " " + size;
 			var svg = d3.select(this)
 			            .append("svg")
-			            .attr("width", size)
-			            .attr("height", size);
+			            .attr("class", "svg-content")
+			            .attr("viewBox", viewBox)
+			            .attr("preserveAspectRatio", "xMinYMin meet");
 
 			var arc = d3.svg.arc()
                 .innerRadius(innerRadius)

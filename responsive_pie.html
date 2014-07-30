@@ -7,7 +7,22 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
     <style type="text/css">
-</style>
+      .svg-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%;
+        vertical-align: middle;
+        overflow: hidden;
+      }
+
+      .svg-content {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
   </head>
   <body>
     <nav class="top-bar" data-topbar>
@@ -52,8 +67,8 @@
             </ul>
         </fieldset>
       </div>
-      <div class="medium-6 columns" id="pieChart">
-        <div id="question1">
+      <div class="medium-6 columns">
+        <div id="pieChart" class="svg-container">
         </div>
       </div>
     </div>
