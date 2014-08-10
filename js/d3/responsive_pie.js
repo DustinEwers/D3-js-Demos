@@ -29,14 +29,12 @@ d3.d3Demos.piechart = function(){
 		        .enter()
 		        .append("g")
 		        .attr("class", "arc")
-		        .attr("transform", "translate(" + outerRadius + ", " + outerRadius + ")");
-
-			arcs.append("path").attr("fill", function(d, i) {
-			        return colors(i);
-			    })
-			    .attr("d", arc);
-
-        });
+		        .attr("transform", "translate(" + outerRadius + ", " + outerRadius + ")")
+      			.append("path").attr("fill", function(d, i) {
+      			        return colors(i);
+      			    })
+      			    .attr("d", arc);
+          });
       }
 
       generator.size = function(value) {

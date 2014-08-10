@@ -13,7 +13,7 @@
                   PercentGuessed: 26
                 }];
 
-  d3.select("#tagTableBody")
+  d3.select("#tableBody")
     .selectAll("tr")
     .data(dataSet)
     .enter()
