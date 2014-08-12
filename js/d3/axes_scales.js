@@ -13,11 +13,11 @@
                            .domain([0, d3.max(data)])
                            .nice();
 
-            // Power Scale
-            var powScale = d3.scale
-                           .pow().exponent(.5)
-                           .range([0, height-10])
-                           .domain([0, d3.max(data)]);
+            // Ordinal Scale
+            var ordinalScale = d3.scale
+                           .ordinal()
+                           .domain(d3.range(data.length))
+                           .rangeBands([0, height-10]);
 
             // Time Scale
             var timeScale = d3.time.scale()
@@ -30,9 +30,9 @@
                           .orient("left")
                           .ticks(5);
 
-            //Power Axis
-            var powAxis = d3.svg.axis()
-                          .scale(powScale)
+            //Ordinal Axis
+            var ordinalAxis = d3.svg.axis()
+                          .scale(ordinalScale)
                           .orient("right");
 
             // Time Axis
@@ -63,14 +63,14 @@
             svg.append("g")
                .attr("class", "axis")
                .attr("transform", "translate(150,5)")
-               .call(powAxis)
+               .call(ordinalAxis)
                .append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("dy", "-30px")
                 .attr("dx", "-140px")
                 .attr("class", "label")
                 .style("text-anchor", "end")
-                .text("Power Axis");
+                .text("Ordinal Axis");
 
             svg.append("g")
                .attr("class", "axis")
