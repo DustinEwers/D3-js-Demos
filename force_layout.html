@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Force Layout</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">D3 Demos</a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li><a href="./loading_data.html">Loading Data</a></li>
+          <li><a href="./svg.html">Just Enough SVG</a></li>
+          <li><a href="./updating_data.html">Updating Data</a></li>
+          <li><a href="./axes_scales.html">Scales and Axes</a></li>
+          <li><a href="./bar_chart.html">Bar Chart</a></li>
+          <li><a href="./responsive_pie.html">Responsive Pie Chart</a></li>
+        </ul>
+      </section>
+    </nav>        
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Force Layout</h1>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <p>This layout demostrates the Force Layout</p>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="chartContainer">
+        </div>
+      </div>
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/d3/d3.js"></script>
+    <!-- Custom Example Code -->
+    <script src="js/d3/force_layout.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
