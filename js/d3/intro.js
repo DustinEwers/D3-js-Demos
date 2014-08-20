@@ -2,8 +2,17 @@
 var w = 1000,
     h = 800;
 
-var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; }),
-    color = d3.scale.category10();
+var speed = 5,
+    xm = speed,
+    ym = speed,
+    pad= 10,
+    bounces = 2,
+    targetNode = 1;
+    pursuitFunction = moveChaserBounce,
+    numNodes = 200;
+
+var nodes = d3.range(numNodes).map(function() { return {radius: Math.random() * 12 + 4}; }),
+    color = d3.scale.category20b();
 
 var force = d3.layout.force()
     .gravity(0.05)
@@ -25,14 +34,14 @@ svg.selectAll("circle")
     .data(nodes)
   .enter().append("svg:circle")
     .attr("r", function(d) { return d.radius - 2; })
-    .style("fill", function(d, i) { return i===0 ? "AD0000" : color(i % 3); });
+    .style("fill", function(d, i) { return i===0 ? "AD0000" : color(i % 5); });
 
 force.on("tick", function(e) {
   var q = d3.geom.quadtree(nodes),
       i = 0,
       n = nodes.length;
 
-  moveChaserPursue(root);
+  pursuitFunction(root);
 
   while (++i < n) {
     q.visit(collide(nodes[i]));
@@ -45,54 +54,40 @@ force.on("tick", function(e) {
   force.resume();
 });
 
-  /*
-svg.on("mousemove", function() {
-
-  var p1 = d3.mouse(this);
-  root.px = p1[0];
-  root.py = p1[1];
-  force.resume();
-});
-  */
-
-
-var xm = 5,
-    ym = 5,
-    pad= 10;
-
+var bounceCount = 0;
 function moveChaserBounce(node){
   if(root.px >= w-pad || root.px <=pad ){
     xm *= -1;
+    bounceCount++;
   }
 
   if(root.py >= h-pad || root.py <= pad){
     ym *= -1;
+    bounceCount++;
+  }
+
+  if(bounceCount >= bounces){
+   bounceCount = 0;
+   pursuitFunction = moveChaserPursue;
   }
 
   root.px += xm;
   root.py += ym;
 }
 
-
-var speed = 5;
 function moveChaserPursue(node){
-  // TODO - Change it so that it picks one node to chase, and then chases a new node when the first one leaves the box
-  var sheep = nodes.slice(50, 51);
+  var sheep = nodes[targetNode];
   
-  var x = sheep.reduce(function(prev, curr, index){
-    return prev + curr.x;
-  }, 0);
+  if(sheep.py > w || sheep.py < pad || sheep.px > w || sheep.px < pad){
+    if(targetNode>numNodes){
+      targetNode = 0;
+    }
+    targetNode++;
+    pursuitFunction = moveChaserBounce;
+  }
 
-  x = x / sheep.length;
-
-  var y = sheep.reduce(function(prev, curr, index){
-    return prev + curr.y;
-  }, 0);
-
-  y = y / sheep.length;
-
-  root.px = root.px < x? root.px + speed : root.px - speed;
-  root.py = root.py < y? root.py + speed : root.py - speed;
+  root.px = root.px < sheep.px? root.px + speed : root.px - speed;
+  root.py = root.py < sheep.py? root.py + speed : root.py - speed;
 }
 
 function collide(node) {

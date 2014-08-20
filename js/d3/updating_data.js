@@ -9,6 +9,18 @@
                     .attr("width", width)
                     .attr("height", height);
 
+        var prettyColors = [
+            '#000033',
+            '#000044',
+            '#000055',
+            '#000066',
+            '#000077',
+            '#000088',
+            '#000099',
+            '#0000AA',
+            '#0000BB',
+            '#0000CC'];
+
         $(document).ready(function () {
             $("#radius").on("change", function () {
                 $("#radiusValue").text($(this).val());
@@ -46,19 +58,7 @@
                            .ordinal()
                            .domain(d3.range(dataSet.length))
                            .rangeBands([25, width - 25], 0.1);
-
-            var prettyColors = [
-                '#000033',
-                '#000044',
-                '#000055',
-                '#000066',
-                '#000077',
-                '#000088',
-                '#000099',
-                '#0000AA',
-                '#0000BB',
-                '#0000CC'];
-
+          
             var selection = svg.selectAll("circle")
                                .data(dataSet, function (item) { return item.Index });
 

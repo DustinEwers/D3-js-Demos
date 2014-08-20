@@ -58,7 +58,7 @@
                 .attr("dx", "-140px")
                 .attr("class", "label")
                 .style("text-anchor", "end")
-                .text("Linear Axis");
+                .text("Linear");
 
             svg.append("g")
                .attr("class", "axis")
@@ -70,7 +70,7 @@
                 .attr("dx", "-140px")
                 .attr("class", "label")
                 .style("text-anchor", "end")
-                .text("Ordinal Axis");
+                .text("Ordinal");
 
             svg.append("g")
                .attr("class", "axis")
@@ -82,5 +82,5 @@
                 .attr("dx", "-140px")
                 .attr("class", "label")
                 .style("text-anchor", "end")
-                .text("Time Axis");
+                .text("Time");
         })();

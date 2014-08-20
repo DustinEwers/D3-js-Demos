@@ -23,5 +23,4 @@
         message += "<td>" + dataPoint.PercentGuessed + "</td>";
         return message;
     });
-
 })();
