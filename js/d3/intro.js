@@ -9,7 +9,7 @@ var speed = 5,
     bounces = 2,
     targetNode = 1;
     pursuitFunction = moveChaserBounce,
-    numNodes = 200;
+    numNodes = 250;
 
 var nodes = d3.range(numNodes).map(function() { return {radius: Math.random() * 12 + 4}; }),
     color = d3.scale.category20b();
@@ -79,7 +79,7 @@ function moveChaserPursue(node){
   var sheep = nodes[targetNode];
   
   if(sheep.py > h || sheep.py < pad || sheep.px > w || sheep.px < pad){
-    if(targetNode > numNodes){
+    if(targetNode >= numNodes-1){
       targetNode = 0;
     }
     targetNode++;
