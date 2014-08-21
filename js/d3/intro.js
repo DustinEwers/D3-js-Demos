@@ -1,5 +1,5 @@
 
-var w = 1000,
+var w = 1200,
     h = 800;
 
 var speed = 5,
@@ -78,8 +78,8 @@ function moveChaserBounce(node){
 function moveChaserPursue(node){
   var sheep = nodes[targetNode];
   
-  if(sheep.py > w || sheep.py < pad || sheep.px > w || sheep.px < pad){
-    if(targetNode>numNodes){
+  if(sheep.py > h || sheep.py < pad || sheep.px > w || sheep.px < pad){
+    if(targetNode > numNodes){
       targetNode = 0;
     }
     targetNode++;
